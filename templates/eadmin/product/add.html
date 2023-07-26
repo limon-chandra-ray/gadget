@@ -1,0 +1,83 @@
+
+{% extends 'eadmin/layouts/index.html' %}
+{% load attributes %}
+{% block adminbody %}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Hover Table</h4>
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Select Sub Category</label>
+                {{p_form.sub_category|addClass:"form-control"}}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Product Title</label>
+                {{p_form.name|addClass:"form-control"|addPlaceholder:"product title"}}
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label">Product price</label>
+                        {{p_form.price|addClass:"form-control"|addPlaceholder:"product price"}}
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label">Product offer price</label>
+                        {{p_form.offer_price|addClass:"form-control"|addPlaceholder:"product offer price"}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label">Select Brand</label>
+                        {{p_form.brand|addClass:"form-control"}}
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="mb-3">
+                        <label class="form-label">Product offer price</label>
+                        {{p_form.image|addClass:"form-control"}}
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Product discreption</label>
+                {{p_form.discreption|addClass:"form-control"}}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Product Quantity</label>
+                {{p_form.quantity|addClass:"form-control"}}
+            </div>
+            
+            <div class="product_multiple_image">
+                
+                <div class="row">
+                    {{i_forms.management_form}}
+                    {% for i_form in i_forms %}
+                        <div class="col-lg-6 col-12">
+                            <div class="mb-3">
+                                <label class="form-label">{{forloop.counter}} Image Title</label>
+                                {{i_form.image_name|addClass:"form-control"|addPlaceholder:"image title"}}
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="mb-3">
+                                <label class="form-label"> Image</label>
+                                {{i_form.image|addClass:"form-control"}}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+            <button class="btn btn-primary" type="submit">Add Product</button>
+        </form>
+    </div>
+</div>
+
+{% endblock adminbody %}

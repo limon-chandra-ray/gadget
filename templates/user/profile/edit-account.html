@@ -1,0 +1,48 @@
+{% extends 'user/profile/profile-main.html' %}
+{% load attributes %}
+{% block profileBread %}
+<li class="breadcrumb-item active">
+    <a href="{% url 'account:edit_account' %}">Edit my information</a>
+</li>
+{% endblock profileBread %}
+{% block userprofile %}
+
+<div class="row justify-content-start py-5 mt-3">
+    <div class="col-lg-6 col-12">
+        <h2>My Account Information</h2>
+        <form action="{% url 'account:edit_account_save' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="mb-3">
+                        <label class="mb-1"><strong>First Name</strong></label>
+                        <input type="text" class="form-control" name='first_name' placeholder="first name" {% if user.first_name %}value="{{user.first_name}}"{% endif %}>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="mb-3">
+                        <label class="mb-1"><strong>Last Name</strong></label>
+                        <input type="text" class="form-control" name='last_name' placeholder="last name" {% if user.last_name %}value="{{user.last_name}}"{% endif %}>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-12">
+                    <div class="mb-3">
+                        <label class="mb-1"><strong>Email address</strong></label>
+                        <input type="text" class="form-control" name='email' placeholder="email address" {% if user.email %}value="{{user.email}}"{% endif %}>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-12">
+                    <div class="mb-3">
+                        <label class="mb-1"><strong>Phone number</strong></label>
+                        <input type="text" class="form-control" name='phone_number' placeholder="phone number" {% if client.phone_number %}value="{{client.phone_number}}"{% endif %}>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success w-50">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+    
+
+        
+{% endblock userprofile %}

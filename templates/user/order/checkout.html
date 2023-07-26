@@ -1,0 +1,122 @@
+{% extends 'user/layouts/index.html' %}
+{% load static %}
+{% block userbody %}
+
+<div class="row page-titles">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href="javascript:void(0)">Shop</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Checkout</a></li>
+    </ol>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <form action="{% url 'client:order_complete' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6 order-lg-2 mb-4">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Your cart</span>
+                                <span class="badge badge-primary badge-pill">{{total_item}}</span>
+                            </h4>
+                            <ul class="list-group mb-3">
+                                {% for item in items %}
+                                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                    <div>
+                                        <img src="{{item.product.image.url}}" style="width:150px" alt="">
+                                    </div>
+                                    <div>
+                                        <h6 class="my-0">{{item.product.name}}</h6>
+                                        <small class="text-muted">{{item.quantity}} X {{item.product.price}}</small>
+                                    </div>
+                                    
+                                    <span class="text-muted">{{item.get_total}}</span>
+                                </li>
+                                {% endfor %}
+                                
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Total (Taka)</span>
+                                    <strong>{{total_amount}}</strong>
+                                </li>
+
+                            </ul>
+                            <hr class="mb-4">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to
+                                    checkout</button>
+
+                            
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <h4 class="mb-3">Billing address</h4>
+                            <div class="needs-validation" novalidate="">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" name="first_name" placeholder="first name" data_user="{{user.first_name}}" value="{{user.first_name}}" required="">
+                                        
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last name</label>
+                                        <input type="text" class="form-control" id="lastName" name="last_name" placeholder="last name" data_user="{{user.last_name}}" value="{{user.last_name}}" required="">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Phone number</label>
+                                    <input type="text" class="form-control" id="phone" name='phone_number' placeholder="01797856406" data_user="{{client.phone_number}}" value="{{client.phone_number}}"> 
+                                    
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email <span class="text-muted">*</span></label>
+                                    <input type="email" class="form-control" id="email" name="email" data_user="{{user.email}}" value="{{user.email}}" placeholder="you@example.com">
+                                    
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" data_user="{{client.address}}" value="{{client.address}}" required="">
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label class="form-label">City <span>*</spam></label>
+                                        <input type="text" class="form-control" id="city" placeholder="Gopalganj" name="city" data_user="{{client.city}}" value="{{client.city}}" required="">
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Post Code</label>
+                                        <input type="text" class="form-control" id="post_code" placeholder="8100" name="post_code" data_user="{{client.post_code}}" value="{{client.post_code}}" required="">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock userbody %}
+{% block userScript %}
+<script>
+    // const all_form = document.querySelectorAll('.needs-validation .form-control');
+    // for (let i = 0; i < all_form.length; i++) {
+    //     console.log($(this).attr(data_user));
+
+    //     // card_product_item[i].addEventListener('change',function(){
+    //     //     var order_item_id = this.dataset.order_item_id;
+    //     //     var action = this.dataset.action;
+    //     //     console.log(order_item_id)
+    //     //     console.log(action)
+    //     //     updateOrderItem(order_item_id,action);
+    //     //     for (let j = 0; j < all_form.length; j++) {
+    //     //         console.log(this.value);
+                
+    //     //     }
+    //     // })
+    // }
+</script>
+{% endblock userScript %}

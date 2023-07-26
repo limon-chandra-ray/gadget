@@ -1,0 +1,102 @@
+{% extends 'user/profile/profile-main.html' %}
+{% block profileBread %}
+<li class="breadcrumb-item active">
+    <a href="{% url 'account:user_order_list' %}">My orders</a>
+</li>
+{% endblock profileBread %}
+{% block userprofile %}
+<style>
+    .product_details{
+        height: 185px;
+        padding-left: 20px;
+    }
+    .product_details .product_title{
+        max-width: 85%;
+        font-weight: 700;
+    }
+    .product_details .product_info {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-break: 3;
+        text-align: justify;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        line-height: 26px;
+    }
+    .order_product{
+        border-top: 1px solid;
+    }
+    .order_status{
+        display: flex;
+        flex-direction: column;
+        row-gap: 7px;
+        align-items: center;
+    }
+</style>
+<div class="container mt-lg-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-12 d-flex flex-column" style="row-gap:15px">
+            {% for order in orders %}
+                <div class="order_card py-2 px-2 border border-1 border-dark rounded-2">
+                    <div class="d-flex justify-content-between align-items-center px-1 py-2">
+                        <div class="order_info d-flex align-items-center" style="column-gap: 30px;">
+                            <div class="order_number">
+                                <strong>Order number</strong>
+                                <p class="m-0">{{order.transaction}}</p>
+                            </div>
+                            <div class="date_place">
+                                <strong>Date place</strong>
+                                <p class="m-0">{{order.created_at|date:"d/M/Y"}}</p>
+                            </div>
+                            <div class="total_amount">
+                                <strong>Total amount</strong>
+                                <p class="m-0">{{order.get_order_total_amount}}</p>
+                            </div>
+                        </div>
+                        <div class="order_status">
+                            <strong>Order status</strong>
+                            <span
+                                style='color:green'
+                            
+                            >{{order.order_status}}</span>
+                            
+                        </div>
+                        <div class="order_action">
+                            <a href="#" class="btn btn-outline-primary">order view</a>
+                        </div>
+                    </div>
+                    <div class="order_products">
+                        {% for item in order.orderitem_set.all %}
+                            <div class="order_product py-2">
+                                <div class="d-flex">
+                                    <div class="product_image">
+                                        <img src="{{item.product.image.url}}" style="width:200px" alt="">
+                                    </div>
+                                    <div class="product_details">
+                                        <div class="product_details_top d-flex justify-content-between">
+                                            <div class="product_title" style="flex: 1 1 auto;">{{item.product.name}}</div>
+                                            <div class="product_price" style="flex: 0 0 auto;"><i class="fa-solid fa-bangladeshi-taka-sign"></i> {{item.product.price}}</div>
+                                        </div>
+                                        <p class="product_info m-0 py-2">
+                                            {{item.product.discreption}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="order_product_bottom">
+                                    <div class="product_view d-flex justify-content-end">
+                                        <a href="#" class="btn btn-outline-success">view product</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    
+</div>   
+        
+{% endblock userprofile %}

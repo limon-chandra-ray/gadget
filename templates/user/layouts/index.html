@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% include 'user/layouts/head.html' %}
+	<!-- PAGE TITLE HERE -->
+	<title>Ecommerce | {% block title %}{% endblock title %}</title>
+</head>
+<body>
+	{% include 'user/layouts/header.html' %}
+	
+	<div class="container mt-3">
+		{% block userbody %}
+	
+		{% endblock userbody %}
+	</div>
+	{% include 'user/layouts/footer.html' %}
+	{% include 'user/layouts/scripts.html' %}
+	<script>
+		function getcategory(){
+			$.ajax({
+				type:'GET',
+				url:'{% url "client:header_category" %}',
+				dataType:'json',
+				success:(res)=>{
+					var list_='';
+					res.forEach(element => {
+						var link = 'product-'+element["id"]
+						console.log(link)
+						list_ += '<li class="nav-item nav_item">'+
+									'<a class="nav-link" href="'+link+'">'+element["name"]+'</a>'+
+									'</li>';
+					});
+					$('#dynamicheader').append(list_)
+				}
+
+			})
+		}
+		getcategory()
+	</script>
+	{% block userScript %}{% endblock userScript %}
+	{% block usermodal %}{% endblock usermodal %}
+</body>
+</html>

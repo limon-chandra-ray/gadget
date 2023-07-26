@@ -1,0 +1,37 @@
+{% extends 'eadmin/layouts/index.html' %}
+
+{% block adminbody %}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Product Category Table</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table header-border table-hover verticle-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Category Name</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categorys %}
+                        <tr>
+                            <th>{{forloop.counter}}</th>
+                            <td>{{category.name}}</td>
+                            <td>							
+                                <div class="d-flex">
+                                    <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="{% url 'office:category_delete' category.id %}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                </div>					
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock adminbody %}

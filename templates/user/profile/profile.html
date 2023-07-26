@@ -1,0 +1,148 @@
+{% extends 'user/layouts/index.html' %}
+{% load static %}
+{% block userbody %}
+<style>
+    .account-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+        border: 1px solid;
+        border-radius: 7px;
+        font-size: 18px;
+        row-gap: 8px;
+        box-shadow: 0px 5px 9px 0px #a99a9a;
+    }
+    .account-header{
+        display: flex;
+        justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 5px;
+
+    }
+    .ac-header-left{
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+    }
+    .ac-header-left img{
+        width: 75px;
+    }
+    .ac-header-left p{
+        margin: 0;
+    }
+    .ac-header-left h2{
+        margin: 0px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .ac-header-right{
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+    }
+    .ac-header-right .star-points,.ac-header-right .store-credit{
+        width: 150px;
+        border-left: 1px solid;
+    }
+    .star-points p,.store-credit p{
+        margin: 0;
+        text-align: center;
+    }
+</style>
+<div class="container pb-5">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+           <li class="breadcrumb-item active"><a href="{% url 'client:profile' %}">Account</a></li>
+            
+            
+        </ol>
+    </div> 
+    <div class="account-header">
+        <div class="ac-header-left">
+            <div><img src="{% static 'images/user.png' %}" alt=""></div>
+            <div>
+                <p>Hello , </p>
+                <h2>{{user.username}}</h2>
+            </div>
+        </div>
+        <div class="ac-header-right">
+            <div class="star-points">
+                <p>Star points</p>
+                <p>0</p>
+            </div>
+            <div class="store-credit">
+                <p>Store credit</p>
+                <p>0</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="row-gap: 29px;">
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="{% url 'account:user_order_list' %}">
+                <div class="w-100 account-card">
+                    <i class="fa-regular fa-rectangle-list"></i>
+                    <span>Orders</span>
+                </div>
+                
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="{% url 'account:edit_account' %}">
+                <div class="w-100 account-card">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Edit Account</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="{% url 'account:change_password' %}">
+                <div class="w-100 account-card">
+                    <i class="fa-solid fa-user-lock"></i>
+                    <span>Change Password</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="{% url 'account:user_address' %}">
+                <div class="w-100 account-card">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span>Address</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="{% url 'account:transaction' %}">
+                <div class="w-100 account-card">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Your Transactions</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="{% url 'account:star_point' %}">
+                <div class="w-100 account-card">
+                    <i class="fa-regular fa-star"></i>
+                    <span>Star Points</span>
+                </div>
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="col-lg-3 col-md-4 col-6">
+                <a href="{% url 'account:log_out' %}">
+                    <div class="w-100 account-card">
+                        <i class="fa-regular fa-star"></i>
+                        <span>Log out</span>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+{% endblock userbody %}

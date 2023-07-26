@@ -1,0 +1,39 @@
+{% extends 'user/profile/profile-main.html' %}
+{% block profileBread %}
+<li class="breadcrumb-item active">
+    <a href="{% url 'account:user_address' %}">User Address</a>
+</li>
+{% endblock profileBread %}
+{% block userprofile %}
+<div class="row justify-content-start py-5 mt-3">
+    <div class="col-lg-6 col-12">
+        <h2>My Address Book</h2>
+        <form action="{% url 'account:user_address_save' %}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="mb-3">
+                        <label class="mb-1"><strong>City</strong></label>
+                        <input type="text" class="form-control" name='city' placeholder="your city name" {% if client.city %}value="{{client.city}}"{% endif %}>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="mb-3">
+                        <label class="mb-1"><strong>Post Code</strong></label>
+                        <input type="text" class="form-control" name='post_code' placeholder="post code" {% if client.post_code %}value="{{client.post_code}}"{% endif %}>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-12">
+                    <div class="mb-3">
+                        <label class="mb-1"><strong>Address</strong></label>
+                        <input type="text" class="form-control" name='address' placeholder="address" {% if client.address %}value="{{client.address}}"{% endif %}>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-success w-50">Save</button>
+            </div>
+        </form>
+    </div>
+</div>       
+        
+{% endblock userprofile %}

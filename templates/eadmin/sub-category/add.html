@@ -1,0 +1,17 @@
+{% extends 'eadmin/layouts/index.html' %}
+
+{% block adminbody %}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Hover Table</h4>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <button class="btn btn-primary" type="submit">Add Sub Category</button>
+        </form>
+    </div>
+</div>
+
+{% endblock adminbody %}

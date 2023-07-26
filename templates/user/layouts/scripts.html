@@ -1,0 +1,40 @@
+{% load static %}
+<!--**********************************
+        Scripts
+    ***********************************-->
+	<!-- Required vendors -->
+	<script src="{% static 'eadmin/vendor/global/global.min.js'%}"></script>
+	<script src="{% static 'eadmin/vendor/chart.js/Chart.bundle.min.js'%}"></script>
+	<script src="{% static 'eadmin/vendor/jquery-nice-select/js/jquery.nice-select.min.js'%}"></script>
+	
+	
+	
+	{% comment %} <script src="{% static 'eadmin/vendor/owl-carousel/owl.carousel.js'%}"></script> {% endcomment %}
+	
+	<script src="{% static 'eadmin/js/custom.min.js'%}"></script>
+	<script src="{% static 'eadmin/js/dlabnav-init.js'%}"></script>
+
+{% comment %} 	
+
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	 {% endcomment %}
+	<script src="{% static 'js/owl.carousel.js'%}"></script>
+	<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    {% comment %} <script src="{% static 'eadmin/js/custom.min.js'%}"></script>
+	<script src="{% static 'eadmin/js/dlabnav-init.js'%}"></script> {% endcomment %}
+	<script src="{% static 'eadmin/js/demo.js'%}"></script>
+	<script src="{% static 'js/core.js'%}"></script>
+	<script>
+		$(document).ready(function() {
+			$("#homeslider").owlCarousel({
+				loop:true,
+				autoplay:true,
+				responsive:{
+					0:{
+						items:1
+					}
+				}
+			});
+
+		});
+	</script>

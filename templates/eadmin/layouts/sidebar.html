@@ -1,0 +1,88 @@
+<div class="dlabnav">
+    <div class="dlabnav-scroll">
+        <ul class="metismenu" id="menu">
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                <i class="fa-solid fa-truck"></i>
+                <span class="nav-text">Orders</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'office:order_list' %}">Order List</a></li>
+                    <li><a href="{% url 'office:product_add' %}">Delivery Complete</a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                <i class="fa-solid fa-users"></i>
+                <span class="nav-text">Users</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'office:user_list' %}">User List</a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                <i class="fa-brands fa-product-hunt"></i>
+                <span class="nav-text">Products</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'office:product_list' %}">Product List</a></li>
+                    <li><a href="{% url 'office:product_add' %}">Add Product</a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                <i class="fa-solid fa-b"></i>
+                <span class="nav-text">Product Brand</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'office:brand_list' %}">Brand List</a></li>
+                    <li><a href="{%url 'office:brand_add'%}">Add Brand</a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                <i class="fa-solid fa-c"></i>
+                <span class="nav-text">Product Category</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'office:category_list' %}">Category List</a></li>
+                    <li><a href="{%url 'office:category_add'%}">Add Category</a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                <i class="fas fa-chart-line"></i>
+                <span class="nav-text">Product Sub Category</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{% url 'office:sub_category_list' %}">Sub Category List</a></li>
+                    <li><a href="{% url 'office:subcategory_add' %}">Add Sub Category</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        {% comment %} <div class="side-bar-profile">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="side-bar-profile-img">
+                    <img src="images/user.jpg" alt="">
+                </div>
+                <div class="profile-info1">
+                    <h4 class="fs-18 font-w500">Soeng Souy</h4>
+                    <span>example@mail.com</span>
+                </div>
+                <div class="profile-button">
+                    <i class="fas fa-caret-down scale5 text-light"></i>
+                </div>
+            </div>	
+            <div class="d-flex justify-content-between mb-2 progress-info">
+                <span class="fs-12"><i class="fas fa-star text-orange me-2"></i>Task Progress</span>
+                <span class="fs-12">20/45</span>
+            </div>
+            <div class="progress default-progress">
+                <div class="progress-bar bg-gradientf progress-animated" style="width: 45%; height:10px;" role="progressbar">
+                    <span class="sr-only">45% Complete</span>
+                </div>
+            </div>
+        </div> {% endcomment %}
+        
+        <div class="copyright">
+            <p><strong>Gadget Admin</strong> © 2023 All Rights Reserved</p>
+            <p class="fs-12">Made with <span class="heart"></span> by DevLimon</p>
+        </div>
+    </div>
+</div>
